@@ -1,0 +1,110 @@
+{% extends "rotor/views/templates/soal/base.html" %}
+{% block content %}
+   <br>
+   <script LANGUAGE="JavaScript">
+       function cek_jawaban(jwb,jawaban) {
+           if (jwb==jawaban){
+               document.getElementById("pesan").innerHTML = "Pilihan Benar !";
+           } else {
+               document.getElementById("pesan").innerHTML = "Pilihan Salah !";
+           }
+       }
+       function next_problem(){
+             document.getElementById('df').submit();
+       }
+       function show_teori(){
+           document.getElementById('st').submit();
+       }
+   </script>
+   <div class="container">
+    <div class="row">
+        <p>{{soal}}</p>
+        {% if img %}
+            <div><img src='{{img}}'></div>
+        {% endif %}
+         {% if gambar %}
+            <div>
+                <canvas id="myCanvas" width="400" height="200" style="border:1px solid #000000;">
+                </canvas>
+                <script>
+                var c = document.getElementById("myCanvas");
+                var ctx = c.getContext("2d");
+                //document.write('{{gambar}}');
+                {% for pict in gambar %}
+                //document.write('{{pict.obj}}');
+                 create_object(parseInt('{{pict.obj}}'),ctx,'{{pict.param}}');
+                {% endfor %}
+                </script>
+            </div>
+         {% endif %}
+         {% if grafik %}
+            <div>
+                <canvas id="myCanvas1" width="420" height="320" style="border:1px solid #000000;">
+                </canvas>
+                <script>
+                var c = document.getElementById("myCanvas1");
+                var ctx = c.getContext("2d");
+                var ja = parseInt('{{grafik.pair}}');
+                var ar1 = build_array(ja,'{{grafik.datax}}');
+                var ar2 = build_array(ja,'{{grafik.datay}}');
+                //create_grafik(ctx,,,,,,[0,10,20,40],[20,20,-40,10]);
+                create_grafik(ctx,'{{grafik.var1}}','{{grafik.var2}}',parseInt('{{grafik.max1}}'),parseInt('{{grafik.max2}}'),ja,ar1,ar2);
+                </script>
+            </div>
+         {% endif %}
+         {% if tabel %}
+            <div>
+                <br>
+                <table>
+                    <thead align="center">
+                        <th>{{tabel.var1}}</th>
+                        <th>{{tabel.var2}}</th>
+                    </thead>
+                    <tbody align="center">
+                        {% for dat in tabel.data %}
+                        <tr>
+                            <td>{{dat.x}}</td>
+                            <td>{{dat.y}}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+         {% endif %}
+    </div>
+    <div class="row">
+        <br>
+        <ol type="A">
+            {% for pilih in pilihan %}
+                <li>{{pilih}}</li>
+            {% endfor %}
+        </ol>
+    </div>
+
+    <div class="row">
+        <form method="POST" action="/dp-next-problem" id="df" name="df">
+            <input type="button" name="jawab" value="A" onClick="cek_jawaban('A','{{jawaban}}')"/>
+            <input type="button" name="jawab" value="B" onClick="cek_jawaban('B','{{jawaban}}')"/>
+            <input type="button" name="jawab" value="C" onClick="cek_jawaban('C','{{jawaban}}')"/>
+            <input type="button" name="jawab" value="D" onClick="cek_jawaban('D','{{jawaban}}')"/>
+            <input type="button" name="jawab" value="E" onClick="cek_jawaban('E','{{jawaban}}')"/>
+            <input type="button" name="next" value="NEXT" onClick="next_problem()"/>
+            <input type="hidden" name="back" value="{{back}}" />
+            <input type="hidden" name="jawaban" value="{{jawaban}}" />
+        </form>
+    </div>
+    <div class="row">
+        <h3 id="pesan"></h3>
+    </div>
+    {% if teori %}
+        <div class="row">
+            <form method="POST" action="/dp-show-teori" id="st" name="st" target="_blank">
+                <input type="button" name="teori" value="TEORI/RUMUS" onClick="show_teori()" />
+                <input type="hidden" name="urla" value="{{teori}}" />
+            </form>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}
+
+

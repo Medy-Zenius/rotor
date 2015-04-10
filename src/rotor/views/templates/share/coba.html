@@ -1,0 +1,28 @@
+{% extends "rotor/views/templates/soal/base.html" %}
+{% block content %}
+   <br>
+<script>
+    var obj=JSON.parse({{proset}});
+
+     function show_soal(idx) {
+         document.getElementById("dm").innerHTML = "djskad";
+     }
+</script>
+
+<div class="container">
+    <h3>Kode soal: {{kode}}</h3>
+    <h3>{{subjek}}</h3>
+    <h3>Klik Nomer untuk mengerjakan soal</h3>
+</div>
+
+<h3 id="dm"></h3>
+
+<div class="container">
+  <form method="POST" action="/share-check-hasil">
+       <input type="button" value="submit" onClick="show_soal(1)">
+  </form>
+
+</div>
+
+{% endblock %}
+

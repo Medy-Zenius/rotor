@@ -1,0 +1,52 @@
+{% extends "rotor/views/templates/base.html" %}
+
+{% block content %}
+   <br>
+    <p align="center">Edit Template Subjek
+    </p>
+    <div>
+        <form action="{{action}}" method="POST">
+            <div class="large-12 columns">
+                <div class="row">
+                    <div class="large-3 columns">
+                      <label for="right-label" class="right inline">Serial</label>
+                    </div>
+                    <div class="large-2 columns">
+                        <input type="text"  value="{{data.nomer}}" disabled>
+                    </div>
+                    <div>
+                       <input type="hidden" value="{{data.nomer}}" name="serial">
+                    </div>
+                </div>
+            </div>
+            <div class="large-12 columns">
+                <div class="row">
+                    <div class="large-3 columns">
+                      <label for="right-label" class="right inline">Subjek</label>
+                    </div>
+                    <div class="large-2 columns">
+                        <input type="text"  name="subjek" value="{{data.subjek}}">
+                    </div>
+                    <div class="large-7 columns"></div>
+                </div>
+            </div>
+            <div class="large-12 columns">
+                <div class="row">
+                    <div class="large-3 columns">
+                      <label for="right-label" class="right inline">Kode</label>
+                    </div>
+                    <div class="large-2 columns">
+                        <input type="text"  name="kode" value="{{data.kode}}">
+                    </div>
+                    <div class="large-7 columns"></div>
+                </div>
+            </div>
+            <div class="row">
+              <div class="large-10 columns" align="center">
+                <input  type="submit" value="Save Changes" >
+              </div>
+            </div>
+        </form>
+
+    </div>
+{% endblock %}

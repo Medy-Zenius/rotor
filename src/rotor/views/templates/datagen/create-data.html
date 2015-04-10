@@ -1,0 +1,20 @@
+{% extends "rotor/views/templates/base.html" %}
+{% block content %}
+    <br>
+    <div class="container">
+        <form method="POST" action="/datagen-create-data">
+            <div class="row">
+                <div class="large-2 columns">
+                      <label for="right-label" class="right inline">Jumlah variabel</label>
+                </div>
+                <div class="large-3 columns">
+                    <input type="text" name="jvar" placeholder="jvar" />
+                </div>
+            </div>
+            <div class="large-3 columns">
+                <input type="submit"  value="SUBMIT" />
+            </div>
+              <div class="large-4 columns"></div>
+        </form>
+    </div>
+{% endblock %}

@@ -1,0 +1,64 @@
+{% extends "rotor/views/templates/base.html" %}
+{% block content %}
+   <SCRIPT LANGUAGE="JavaScript">
+       function check(toggle){
+          var vfor = document.df.f.value;
+          var vwhen = document.df.w.value;
+          var vlet = document.df.l.value;
+          var vnd = document.df.nd.value;
+          var vvar = document.df.v.value;
+          var vhasil = "(for [" + vfor;
+          if (vwhen != ""){
+               vhasil += " :when " + vwhen;
+          }
+          if (vlet != ""){
+               if (vnd !="") {
+                   vhasil += " :let [" + document.df.han.value + " hasil " + "(/ (Math/round (* " + document.df.l.value + " (Math/pow 10 " + vnd +"))) (Math/pow 10 " + vnd + "))]";
+               } else {
+                   vhasil += " :let [" + document.df.han.value + " hasil " + document.df.l.value +"]";
+               }
+          }
+          if (vlet != "") {
+             vhasil += "] [" + vvar + " hasil])";
+          } else {
+             vhasil += "] [" + vvar + "])";
+          }
+          document.getElementById('hasil').innerHTML = vhasil;
+          if (toggle == 1){
+               document.df.tprogram.value=vhasil;
+               document.getElementById('df').submit();
+          }
+       }
+
+    </SCRIPT>
+
+    <br>
+    <div class="container">
+        <form method="POST" action="/datagen-create-data" name="df" id="df">
+            <div class="row">
+                <div class="large-2 columns">
+                      <label for="right-label" class="right inline">Working data</label>
+                </div>
+            </div>
+            <div>
+                <script>
+                    document.write("Kisaran data (for) <INPUT type='text' name='f' ><br>");
+                    document.write("Syarat data (when) <INPUT type='text' name='w' ><br>");
+                    document.write("Hitungan antara <INPUT type='text' name='han' ><br>");
+                    document.write("hasil <INPUT type='text' name='l' ><br>");
+                    document.write("banyak desimal angka hasil <INPUT type='text' name='nd' ><br>");
+                    document.write("Data yg disimpan (var) <INPUT type='text' name='v' ><br>");
+
+                </script>
+            <div>
+            <div>
+                <input type="button"  value="check hasil" onClick="check(0)" />
+                <input type="button"  value="SUBMIT" onClick="check(1)" />
+            </div>
+                <input type="hidden" name="tprogram" id="tprogram">
+        </form>
+        <div>
+            <p id="hasil">--kode--</p>
+        </div>
+    </div>
+{% endblock %}

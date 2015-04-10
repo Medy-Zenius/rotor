@@ -1,0 +1,55 @@
+{% extends "rotor/views/templates/base.html" %}
+
+{% block content %}
+     <SCRIPT LANGUAGE="JavaScript">
+            function kirim(opt, btr){
+                document.pageform.vod.value = opt;
+                document.pageform.act.value = btr;
+                //document.pageform.submit();
+                document.getElementById('pageform').submit();
+            }
+    </SCRIPT>
+    <br>
+    <h3 align="center">Your Practices Data</h3>
+    <div class="row" align="center">
+        <form method="POST" action="{{action}}" name="pageform" id="pageform" target="_blank">
+        <table>
+            <thead>
+                <th>Butir Pelajaran</th>
+                <th>KK</th>
+                <th>DP-Score</th>
+                <th>DP-Learn</th>
+                <th>Solved Problem</th>
+            </thead>
+
+            <tbody>
+
+                {% for data in datas %}
+                    <tr>
+                        <td>{{data.keterangan}}</td>
+                        <td>{{data.kodekonten}}</td>
+                        <td>
+                        {% if data.dp %}
+                                <input type="button"  value="{{data.kode}}" onClick="kirim('b', '{{data.kode}}')" />
+                        {% endif %}
+                        </td>
+                        <td>
+                        {% if data.dp %}
+                                <input type="button"  value="{{data.kode}}" onClick="kirim('c', '{{data.kode}}')" />
+                        {% endif %}
+                        </td>
+                        <td>
+                            {{data.solved}}
+                        </td>
+
+                    </tr>
+                {% endfor %}
+
+            </tbody>
+        </table>
+        <input type="hidden" name="vod">
+        <input type="hidden" name="act">
+
+        </form>
+      </div>
+{% endblock %}

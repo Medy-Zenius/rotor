@@ -1,0 +1,37 @@
+{% extends "rotor/views/templates/base.html" %}
+
+{% block content %}
+    <div class="container">
+       <div class="row">
+        <form action="{{action}}" method="POST" class="form-horizontal" role="form">
+          <div class="form-group">
+            <label for="ID" class="col-sm-2 control-label">ID</label>
+            <div class="col-sm-3">
+                <div class="form-control">{{id}}</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="Old PW" class="col-sm-2 control-label">Password lama</label>
+            <div class="col-sm-3">
+                <input class="form-control" id="opw" name="opw"  type="password" value="" placeholder="Password lama">
+             </div>
+         </div>
+         <div class="form-group">
+            <label for="address" class="col-sm-2 control-label">Password baru</label>
+            <div class="col-sm-3">
+                <input class="form-control" id="npw" name="npw"  type="password" value="" placeholder="Password baru">
+             </div>
+         </div>
+         <div class="form-group">
+            <label for="address" class="col-sm-2 control-label">Confirm PW baru</label>
+            <div class="col-sm-3">
+                <input class="form-control" id="npw1" name="npw1"  type="password" value="" placeholder=" Confirm Password baru">
+             </div>
+         </div>
+         <div class="col-sm-2">
+                <input type="submit" value="Ganti Password" class="btn btn-default" >
+         </div>
+        </form>
+        </div>
+    </div>
+{% endblock %}

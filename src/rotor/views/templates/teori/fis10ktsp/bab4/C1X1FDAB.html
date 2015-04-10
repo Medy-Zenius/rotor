@@ -1,0 +1,87 @@
+{% extends "progen/views/templates/teori/base.html" %}
+{% block content %}
+<br>
+<div class="container">
+<div class="row">
+    <p>Hukum-hukum Newton Tentang Gerak
+        </p>
+</div>
+<div class="panel">
+    <p>Hukum Newton I (Kelembaman)</p>
+    <p>Setiap benda akan tetap diam atau bergerak lurus beraturan jika tidak ada gaya yang bekerja padanya. <br>
+       Jika $\Sigma F = 0$ maka v = 0 atau v = konstan
+    </p>
+    <p>Hukum Newton II (Percepatan)<br>
+       Percepatan yang dialami suatu benda berbanding lurus dengan gaya yang bekerja padanya dan berbanding terbalik dengan
+        massanya. </br>
+    <h3>$ a = \frac{\Sigma F}{m}$</h3>
+    </p>
+    <p>Hukum Newton III (Aksi - Reaksi)</br>
+       Jika benda A memberi gaya kepada benda B maka benda B akan memberi gaya yang sama tetapi berlawanan arah kepada benda
+       A.<br>
+       $F_{aksi} = - F_{reaksi}$<br>
+    </p>
+</div>
+<div class="panel">
+    <p>Macam-macam Gaya</p>
+    <p>Gaya Berat <br>
+       Gaya tarik bumi terhadap benda (arahnya ke pusat bumi)<br>
+       W = m g <br>
+       W = gaya berat, m = massa benda, g = percepatan gravitasi bumi (kalau tidak disebut dianggap 10 m/s<sup>2</sup>)</p>
+
+    <p>Gaya Kontak<br>
+       $f_{kontak}$ => gaya yang terjadi akibat persentuhan benda-benda:
+       <ol>
+           <li>gaya normal <br>
+               N => tegak lurus dengan bidang sentuh</li>
+           <li>gaya gesek <br>
+               $f_g$ => berlawanan arah dengan arah gerak relatif atau kecenderungan gerak relatif antara benda
+               yang bersentuhan: </li>
+           <ol type="a">
+               <li>gaya gesek statis <br>
+                   $f_s$ => pada benda yang masih diam, nilai dari nol sampai suatu nilai maksimum <br>
+                   $0\leq f_s \leq f_smax$</li>
+               <li>gaya gesek kinetis <br>
+                   $f_k$ => pada benda bergerak, suatu nilai yang tetap</li>
+           </ol>
+       </ol>
+       gaya kontak = penjumlahan vektor gaya gesek dan gaya normal <br>
+       karena gaya normal dan gaya gesek saling tegak lurus: <br>
+       $f_{kontak}=\sqrt{N^2 + f_g^2}$
+
+    </p>
+     <p>Gaya tegangan tali<br>
+        T => gaya tarikan tali terhadap benda yang menariknya<br>
+    </p>
+    <p>Gaya sentripetal<br>
+       $f_{sp}$ => gaya yang menuju pusat lingkaran pada benda yang bergerak dalam lintasan melingkar. Besarnya:<br>
+        $f_{sp} = m\times a_{sp} = m \frac{v_T{}^2}{R}$ <br>
+        $v_T$ = besar kecepatan (laju) linier atau tangensial<br>
+        R = jejari lintasan gerak
+
+   </p>
+</div>
+<div class="panel">
+    <p>Contoh Diagram Gaya Benda Diam</p>
+    <p><img src="/img/fis10ktsp/bab4/diag_diam.png"></p>
+</div>
+<div class="panel">
+    <p>Contoh Diagram Gaya Benda Bergerak</p>
+    <p><img src="/img/fis10ktsp/bab4/diag_move.png"></p>
+</div>
+<div class="panel">
+    <p>Contoh Gaya Sentripetal</p>
+    <p>Benda diikat tali diputar horisontal<br>
+       <img src="/img/fis10ktsp/bab4/tali_horisontal.png"></p>
+    <p>Benda diikat tali diputar vertikal (gaya sentripetal di beberapa posisi)<br>
+       <img src="/img/fis10ktsp/bab4/tali vertikal.png"></p>
+    <p>Benda berbelok di permukaan datar horisontal<br>
+       <img src="/img/fis10ktsp/bab4/belok_datar.png"></p>
+    <p>Benda berputar vertikal di dalam tabung<br>
+       <img src="/img/fis10ktsp/bab4/benda_dalam_tabung.png"></p>
+</div>
+<div class="row">
+    <p>Video teori: <a href="http://www.zenius.net/c/1871/fis10" target="_blank">www.zenius.net</a> kode konten: 1871</p>
+</div>
+</div>
+{% endblock %}

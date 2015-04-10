@@ -1,0 +1,21 @@
+{% extends "rotor/views/templates/base.html" %}
+{% block content %}
+    <br>
+    <div class="container">
+        <div>Cari kode butir Pelajaran</div>
+        <form method="POST" action="{{action}}">
+            <div class="row">
+                <div class="large-2 columns">
+                      <label for="right-label" class="right inline">Kode Butir</label>
+                </div>
+                <div class="large-2 columns">
+                    <input type="text" name="kdbtr" placeholder="kodebutir" />
+                </div>
+                <div class="large-3 columns">
+                    <input type="submit"  value="Cari !" />
+                </div>
+                  <div class="large-5 columns"></div>
+            </div>
+        </form>
+    </div>
+{% endblock %}

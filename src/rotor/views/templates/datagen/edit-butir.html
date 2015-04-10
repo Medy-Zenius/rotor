@@ -1,0 +1,76 @@
+{% extends "rotor/views/templates/base.html" %}
+
+{% block content %}
+   <br>
+    <p align="center">Lesson Plan - Edit Butir Pelajaran</p>
+    <div>
+
+        <form action="/datagen-update-butir" method="POST">
+            <div class="large-12 columns">
+                <div class="row">
+                    <div class="large-3 columns">
+                      <label for="right-label" class="right inline">Kode Butir</label>
+                    </div>
+                    <div class="large-2 columns">
+                        <input type="text"  value="{{data.kodebutir}}" disabled>
+                    </div>
+                    <div class="large-7 columns">
+                       <input type="hidden" value="{{data.kodebutir}}" name="kodebutir">
+                    </div>
+                </div>
+            </div>
+            <div class="large-12 columns">
+                <div class="row">
+                    <div class="large-3 columns">
+                      <label for="right-label" class="right inline">Code</label>
+                    </div>
+                    <div class="large-2 columns">
+                        <input type="text"  value="{{data.code}}" name="code" tabindex="1">
+                    </div>
+                    <div class="large-7 columns"></div>
+                </div>
+            </div>
+            <div class="large-12 columns">
+                <div class="row">
+                    <div class="large-3 columns">
+                      <label for="right-label" class="right inline">Data</label>
+                    </div>
+                    <div class="large-9 columns">
+                        <input type="text"  name="data" value="{{data.data}}" tabindex="2">
+                    </div>
+
+                </div>
+            </div>
+            <div class="large-12 columns">
+                <div class="row">
+                    <div class="large-3 columns">
+                      <label for="right-label" class="right inline">Soal</label>
+                    </div>
+                    <div class="large-2 columns">
+                        <input type="text"  name="soal" value="{{data.soal}}" tabindex="3">
+                    </div>
+                    <div class="large-7 columns">
+                    </div>
+                </div>
+            </div>
+            <div class="large-12 columns">
+                <div class="row">
+                    <div class="large-3 columns">
+                      <label for="right-label" class="right inline">Gambar</label>
+                    </div>
+                    <div class="large-2 columns">
+                        <input type="text"  name="gambar" value="{{data.gambar}}" tabindex="4">
+                    </div>
+                    <div class="large-7 columns">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+              <div class="large-10 columns" align="center">
+                <input  type="submit" value="Update Data" tabindex="5">
+              </div>
+            </div>
+        </form>
+
+    </div>
+{% endblock %}

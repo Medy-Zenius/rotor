@@ -1,0 +1,28 @@
+{% extends "rotor/views/templates/base.html" %}
+
+{% block content %}
+
+    <br>
+    <h3 align="center">Peringkat Berdasarkan Skor Total</h3>
+    <div class="row" align="center">
+
+        <table>
+            <thead>
+                <th>PERINGKAT</th>
+                <th>ID</th>
+                <th>SKOR</th>
+            </thead>
+
+            <tbody>
+                {% for datum in data %}
+                    <tr><td></td>
+                        <td>{{datum.id}}</td>
+                        <td>{{datum.sum}}</td>
+                    </tr>
+                {% endfor %}
+
+            </tbody>
+        </table>
+
+      </div>
+{% endblock %}

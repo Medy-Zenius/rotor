@@ -1,0 +1,101 @@
+{% extends "rotor/views/templates/base.html" %}
+{% block content %}
+   <script LANGUAGE="JavaScript">
+      function build_array1(ja,str){
+          var step = 1;
+          var arr = [];
+          var a = "";
+          for (i=0;i<ja;i++) {
+            arr[i]=0;
+            a="";
+            while (str.substr(step,1) != " " && str.substr(step,1) != "]")  {
+              a = a + str.substr(step,1);
+              step=step+1;
+            }
+            arr[i]=a;
+            step=step+1;
+          }
+          return arr;
+      }
+      function build_array_str(ja,str){
+          var step = 1;
+          var arr = [];
+          var a = "";
+          for (i=0;i<ja;i++) {
+            arr[i]="";
+            a="";
+              while (str.substr(step,1) != "@" && str.substr(step,1) != "]")  {
+              a = a + str.substr(step,1);
+              step=step+1;
+            }
+            arr[i]=a;
+            step=step+1;
+          }
+          return arr;
+        }
+
+       function olah_soal() {
+           var ct=parseInt('{{cfdata}}');
+           var arr1=build_array1(ct,'{{fdata}}');
+           var vsoal="@" + document.fsoal.isoal.value +"@";
+           var arr2=build_array_str(ct,vsoal);
+           var str="";
+           for (i=0;i<ct;i++){
+               if (i < ct-1) {
+                   str += arr2[i] + arr1[i];
+               } else {
+                   str += arr2[i];
+               }
+           }
+           document.sf.showsoal.value=str;
+           document.df.soal.value=vsoal;
+           document.getElementById('soal').innerHTML = str;
+       }
+       function show_teori(){
+           document.getElementById('st').submit();
+       }
+   </script>
+    <div class="container">
+        <div class="panel">
+            <h3>{{kode}}</h3>
+        </div>
+        <div class="panel">
+            <p>{{data}}</p>
+        </div>
+        <div><p>Total={{cdata}}<br>
+                Data Pertama = {{fdata}}<br>
+                Jumlah elemen = {{cfdata}}
+            </p>
+
+        </div>
+        <div>
+             <form name="fsoal">
+                <p>Soal:<br>
+                    <input type="text" name="isoal">
+                    <input type="button" value="Create Soal" onClick="olah_soal()">
+                </p>
+            </form>
+
+        </div>
+        <div class="panel">
+            <p id="soal">SOAL$x^2$ <sub>2</sub></p>
+        </div>
+        <div>
+            <form method="POST" action="/datagen-show-soal" name="sf" target="_blank">
+                <input type="submit" value="Show Soal">
+                <input type="hidden" name="showsoal">
+            </form>
+        </div>
+        <div>
+            <form method="POST" action="/datagen-save-data" id="df" name="df">
+                <p>Kode Butir:<br>
+                <input type="text" name="kodebutir">
+                </p>
+                <input type="submit" value="SAVE">
+                <input type="hidden" name="code" value="{{kode}}">
+                <input type="hidden" name="datas" value="{{data}}">
+                <input type="hidden" name="soal">
+            </form>
+        </div>
+    </div>
+{% endblock %}

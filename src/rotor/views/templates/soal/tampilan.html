@@ -1,0 +1,88 @@
+{% extends "rotor/views/templates/soal/base.html" %}
+{% block content %}
+   <br>
+   <div class="container">
+    <div class="row">
+        <p>{{soal}}
+
+        </p>
+        {% if img %}
+            <div><img src={{img}}></div>
+        {% endif %}
+         {% if gambar %}
+            <div>
+                <canvas id="myCanvas" width="400" height="200" style="border:1px solid #000000;">
+                </canvas>
+                <script>
+                var c = document.getElementById("myCanvas");
+                var ctx = c.getContext("2d");
+                //document.write('{{gambar}}');
+                {% for pict in gambar %}
+                //document.write('{{pict.obj}}');
+                 create_object(parseInt('{{pict.obj}}'),ctx,'{{pict.param}}');
+                {% endfor %}
+                </script>
+            </div>
+         {% endif %}
+         {% if grafik %}
+            <div>
+                <canvas id="myCanvas1" width="420" height="320" style="border:1px solid #000000;">
+                </canvas>
+                <script>
+                var c = document.getElementById("myCanvas1");
+                var ctx = c.getContext("2d");
+                var ja = parseInt('{{grafik.pair}}');
+                var ar1 = build_array(ja,'{{grafik.datax}}');
+                var ar2 = build_array(ja,'{{grafik.datay}}');
+                //create_grafik(ctx,,,,,,[0,10,20,40],[20,20,-40,10]);
+                create_grafik(ctx,'{{grafik.var1}}','{{grafik.var2}}',parseInt('{{grafik.max1}}'),parseInt('{{grafik.max2}}'),ja,ar1,ar2);
+                </script>
+            </div>
+         {% endif %}
+         {% if tabel %}
+            <div>
+                <br>
+                <table>
+                    <thead align="center">
+                        <th>{{tabel.var1}}</th>
+                        <th>{{tabel.var2}}</th>
+                    </thead>
+                    <tbody align="center">
+                        {% for dat in tabel.data %}
+                        <tr>
+                            <td>{{dat.x}}</td>
+                            <td>{{dat.y}}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+         {% endif %}
+    </div>
+    <div class="row">
+        <br>
+        <ol type="A">
+            {% for pilih in pilihan %}
+                <li>{{pilih}}</li>
+            {% endfor %}
+        </ol>
+    </div>
+
+    <div class="row">
+        <form method="POST" action="/dp-cek-jawaban" id="df" name="df">
+            <input type="submit" name="jawab" value="A"/>
+            <input type="submit" name="jawab" value="B"/>
+            <input type="submit" name="jawab" value="C"/>
+            <input type="submit" name="jawab" value="D"/>
+            <input type="submit" name="jawab" value="E"/>
+            <input type="hidden" name="vvoid" value="{{jawaban}}" />
+            <input type="hidden" name="back" value="{{back}}" />
+
+
+        </form>
+    </div>
+    <div class="row">
+        <h2>Solved Problems: {{solved}} </h2>
+    </div>
+</div>
+{% endblock %}

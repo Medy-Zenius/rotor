@@ -1,0 +1,97 @@
+{% extends "rotor/views/templates/soal/base.html" %}
+{% block content %}
+   <br>
+<div class="container">
+    <h3>{{subjek}}</h3>
+</div>
+<table>
+<tbody>
+
+   {% for problem in proset %}
+   <tr>
+       <td valign="top">{{problem.no}}.</td>
+       <td>{{problem.soal}} <br>
+           {% if problem.img %}
+              <img src={{problem.img}}> <br>
+           {% endif %}
+           {% if problem.pictures %}
+                <br>
+                <canvas id="myCanvas{{problem.no}}" width="400" height="200" style="border:1px solid #000000;">
+                </canvas>
+                <script>
+                    var c = document.getElementById("myCanvas{{problem.no}}");
+                    var ctx = c.getContext("2d");
+                    //document.write('{{problem.gambar}}');
+                    {% for pict in problem.pictures %}
+                        //document.write('{{pict.obj}}');
+                         create_object(parseInt('{{pict.obj}}'),ctx,'{{pict.param}}');
+                    {% endfor %}
+                </script>
+                <br>
+           {% endif %}
+           {% if problem.grafik %}
+                <br>
+                <canvas id="myCanvas1{{problem.no}}" width="420" height="320" style="border:1px solid #000000;">
+                </canvas>
+                <script>
+                var c = document.getElementById("myCanvas1{{problem.no}}");
+                var ctx = c.getContext("2d");
+                var ja = parseInt('{{problem.grafik.pair}}');
+                var ar1 = build_array(ja,'{{problem.grafik.datax}}');
+                var ar2 = build_array(ja,'{{problem.grafik.datay}}');
+                //create_grafik(ctx,,,,,,[0,10,20,40],[20,20,-40,10]);
+                create_grafik(ctx,'{{problem.grafik.var1}}','{{problem.grafik.var2}}',parseInt('{{problem.grafik.max1}}'),parseInt('{{problem.grafik.max2}}'),ja,ar1,ar2);
+                </script>
+                <br><br>
+         {% endif %}
+
+         {% if problem.tabel %}
+                <br>
+                <table>
+                    <thead align="center">
+                        <th>{{problem.tabel.var1}}</th>
+                        <th>{{problem.tabel.var2}}</th>
+                    </thead>
+                    <tbody align="center">
+                        {% for dat in problem.tabel.data %}
+                        <tr>
+                            <td>{{dat.x}}</td>
+                            <td>{{dat.y}}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+         {% endif %}
+
+         {% if problem.pilihan %}
+            <ol type="A">
+                {% for pilih in problem.pilihan %}
+                    <li>{{pilih}}</li>
+                {% endfor %}
+            </ol>
+            <br>
+         {% endif %}
+       </td>
+    </tr>
+  {% endfor %}
+</tbody>
+</table>
+<div class="container">
+    <h3>Kunci Jawaban</h3>
+    <table>
+        <thead>
+            <th>No</th>
+            <th>Kunci</th>
+        </thead>
+        <tbody>
+            {% for kunci in proset %}
+              <tr>
+                  <td>{{kunci.no}}</td>
+                  <td>{{kunci.jawaban}}</td>
+              </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}

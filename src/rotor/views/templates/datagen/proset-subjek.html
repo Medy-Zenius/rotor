@@ -1,0 +1,20 @@
+{% extends "rotor/views/templates/base.html" %}
+{% block content %}
+    <br>
+    <div class="container">
+        <h3>Buat subject Proset yang jelas</h3>
+        <form method="POST" action="{{action}}">
+            <div class="row">
+                <div class="large-2 columns">
+                      <label for="right-label" class="right inline">Subjek</label>
+                </div>
+                <div class="large-10 columns">
+                    <input type="text" name="subjek">
+                </div>
+            </div>
+            <div>
+                <input type="submit"  value="SUBMIT"/>
+            </div>
+        </form>
+
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends "rotor/views/templates/base.html" %}
+{% block content %}
+    <br>
+    <div class="container">
+        <div>Input kode TO</div>
+        <form method="POST" action="{{action}}">
+            <div class="row">
+                <div class="large-2 columns">
+                      <label for="right-label" class="right inline">Kode TO</label>
+                </div>
+                <div class="large-2 columns">
+                    <input type="text" name="kode" placeholder="Kode Try Out" />
+                </div>
+                <div class="large-3 columns">
+                    <input type="submit"  value="SUBMIT" />
+                </div>
+                  <div class="large-5 columns"></div>
+            </div>
+        </form>
+    </div>
+{% endblock %}

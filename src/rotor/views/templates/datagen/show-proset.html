@@ -1,0 +1,29 @@
+{% extends "rotor/views/templates/base.html" %}
+
+{% block content %}
+    <br>
+    <h3 align="center">Show-Proset: Pilih Proset !</h3>
+    <div class="row" align="center">
+       <form method="POST" action="{{action}}" target="_blank">
+        <table>
+            <thead>
+                <th>No</th>
+                <th>Kode</th>
+                <th>Subjek</th>
+            </thead>
+
+            <tbody>
+
+                {% for datum in data %}
+                    <tr>
+                        <td></td>
+                        <td><input type="submit" name="kode" value="{{datum.nomer}}"></td>
+                        <td>{{datum.subjek}}</td>
+                    </tr>
+                {% endfor %}
+
+            </tbody>
+        </table>
+        </form>
+      </div>
+{% endblock %}
